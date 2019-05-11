@@ -39,6 +39,12 @@ public class UsersiteController {
 		model.addAttribute(siteuser);
 		return "WEB-INF/siteuser/addsiteuser.jsp";
 	}
+	@RequestMapping(path="deleteSiteuser.do", method = RequestMethod.POST)
+	public String deleteSiteuser(Model model, int suid) {
+		System.out.println("Siteuser ID: " + suid);
+		model.addAttribute("success", siteuserDAO.removeSiteuser(suid));
+		return "WEB-INF/siteuser/deletesuccess.jsp";
+	}
 //	@RequestMapping(path="saveSiteuser.do", method = RequestMethod.POST)
 //	public String updateSiteuser(Model model, int suid, Siteuser siteuser) {
 //		model.addAttribute("siteuser", siteuserDAO.updateSiteuser(suid, siteuser));
@@ -49,7 +55,6 @@ public class UsersiteController {
 	public ModelAndView updateSiteuser(@ModelAttribute("siteuser")Siteuser siteuser) {
 		ModelAndView mv = new ModelAndView();
 		Siteuser updatedSiteuser;
-		System.out.println(siteuser);
 		
 		if (siteuser != null) {
 			updatedSiteuser = siteuserDAO.updateSiteuser(siteuser);

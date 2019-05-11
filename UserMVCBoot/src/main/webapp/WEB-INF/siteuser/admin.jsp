@@ -32,11 +32,11 @@
 			</form>
 		<c:choose>
 			<c:when test="${! empty siteuserList }">
-					<h4>Site Users...</h4>
+					<h5>Site Users...</h5>
 					<ul class="list-group">
 					<c:forEach var="siteuser" items="${siteuserList}">
-						<li class="list-group-item list-group-item-action">* <a
-							href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName } ${siteuser.lastName }</a></li>
+						<li class="list-group-item list-group-item-action">
+						<a href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName } ${siteuser.lastName }</a></li>
 					</c:forEach>
 				</ul>
 				<br>

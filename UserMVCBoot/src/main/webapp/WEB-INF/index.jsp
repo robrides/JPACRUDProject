@@ -16,6 +16,7 @@
 </head>
 <body>
 	<div class="container">
+		<h1>Boot MVC Site Users</h1>
 		<div class="form-group">
 			<form class="btn btn-secondary" class="form-control"
 				action="getSiteuser.do" method="GET">

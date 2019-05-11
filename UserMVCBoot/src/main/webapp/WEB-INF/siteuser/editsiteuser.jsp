@@ -17,7 +17,7 @@
 <body>
 <div class="container">
 <div class="form-group">
-		<form:form class="form-control btn btn-secondary" action="saveSiteuser.do" method="POST" modelAttribute="siteuser">
+		<form:form class="form-control" action="saveSiteuser.do" method="POST" modelAttribute="siteuser">
 			<form:label path="id">Id: ${siteuser.id }</form:label>
 			<form:input path="id" type="hidden"/>
 			<form:errors path="id" />
@@ -25,8 +25,6 @@
 			<form:label path="firstName">First Name: </form:label>
 			<form:input path="firstName" />
 			<form:errors path="firstName" />
-			<br />
-			<br />
 			<form:label path="lastName">Last Name:</form:label>
 			<form:input path="lastName" />
 			<form:errors path="lastName" />
@@ -67,13 +65,17 @@
 			<form:input path="userType" />
 			<form:errors path="userType" />
 			<br />
-			<input type="submit" value="Save Changes">
+			<form:label path="lastLogin">Last Login:</form:label>
+			<form:input path="lastLogin" />
+			<form:errors path="lastLogin" />
+			<br />
+			<input type="submit" class="btn btn-primary" value="Save Changes">
 		</form:form>
-		<form class="btn btn-secondary" class="form-control" action="/" method="GET">
+	</div>
+	</div><br>
+		<form class="btn btn-secondar" class="form-control" action="/" method="GET">
 			<input type="submit" value="Home">
 		</form>
-	</div>
-	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

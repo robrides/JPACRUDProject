@@ -16,36 +16,53 @@
 </head>
 <body>
 	<div class="container">
-		<div><div class="list-group-item-heading">
-			<h5>${siteuser.firstName} ${siteuser.lastName}</h5>
+		<div>
+			<div class="list-group-item-heading">
+				<h5>${siteuser.firstName} ${siteuser.lastName}</h5>
 			</div>
-			<div class = "list-group-item-text">
-			<ul class="list-group">
-				<li class="list-group-item">${siteuser.userType}</li>
-				<li class="list-group-item">${siteuser.username}</li>
-				<li class="list-group-item">${siteuser.email}</li>
-				<li class="list-group-item">${siteuser.password}</li>
-				<li class="list-group-item">${siteuser.accountStatus}</li>
-				<li class="list-group-item">${siteuser.jobTitle}</li>
-				<li class="list-group-item">${siteuser.salary}</li>
-				<li class="list-group-item">${siteuser.numVisits}</li>
-				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
-						site</a></li>
-			</ul>
+			<div class="list-group-item-text">
+				<ul class="list-group">
+					<li class="list-group-item">User Type: ${siteuser.userType}</li>
+					<li class="list-group-item">Username: ${siteuser.username}</li>
+					<li class="list-group-item">Email: ${siteuser.email}</li>
+					<li class="list-group-item">Password: ${siteuser.password}</li>
+					<li class="list-group-item">Account status:
+						${siteuser.accountStatus}</li>
+					<li class="list-group-item">Job Title: ${siteuser.jobTitle}</li>
+					<li class="list-group-item">Salary: ${siteuser.salary}</li>
+					<li class="list-group-item">Number of visits:
+						${siteuser.numVisits}</li>
+					<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
+							site</a></li>
+					<li class="list-group-item">Last Login: ${siteuser.lastLogin}"</li>
+				</ul>
 			</div>
 		</div>
-		<form class="btn btn-secondary" class="form-control" action="updateSiteuser.do" method="POST">
+		<form class="btn btn-secondary" class="form-control"
+			action="updateSiteuser.do" method="POST">
 
-			<input type="hidden" name="suid" class="btn btn-primary" value="${siteuser.id}" />
-			<input type="submit" value="Update User"/>
+			<input type="hidden" name="suid" class="btn btn-primary"
+				value="${siteuser.id}" /> <input type="submit"
+				class="btn btn-primary" value="Update User" />
 		</form>
-				<form class="btn btn-secondary" class="form-control" action="/" method="GET">
+		<form class="btn btn-secondary" class="form-control"
+			action="addSiteuser.do" method="GET">
+			<input type="submit" class="btn btn-primary" value="Add User" />
+		</form><p>
+				<form class="btn btn-secondary" class="form-control"
+			action="deleteSiteuser.do" method="POST">
+
+			<input type="hidden" name="suid" class="btn btn-danger"
+				value="${siteuser.id}" /> <input type="submit"
+				class="btn btn-primary" value="Delete User" />
+		</form>
+				<form class="btn btn-secondary" class="form-control" action="/"
+			method="GET">
 			<input type="submit" class="btn btn-primary" value="Home" />
 		</form>
-				<form class="btn btn-secondary" class="form-control" action="addSiteuser.do" method="GET">
-			<input type="submit" class="btn btn-primary" value="Add User" />
-		</form>
-
+<%-- 		<c:when test="${! empty error }">
+			<h2>${error }</h2>
+		</c:when> --%>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

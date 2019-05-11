@@ -32,16 +32,15 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	}
 
 	public Siteuser updateSiteuser(Siteuser siteuser) {
-		Siteuser mngd;
+		Siteuser mngd = new Siteuser();
 		try {
-			mngd = em.find(Siteuser.class, siteuser.getId());
-			mngd.setUsername(siteuser.getEmail());
+			mngd.setUsername(siteuser.getUsername());
 			mngd.setEmail(siteuser.getEmail());
-			mngd.setFirstName(siteuser.getEmail());
-			mngd.setLastName(siteuser.getEmail());
-			mngd.setPassword(siteuser.getEmail());
-			mngd.setAccountStatus(siteuser.getEmail());
-			mngd.setJobTitle(siteuser.getEmail());
+			mngd.setFirstName(siteuser.getFirstName());
+			mngd.setLastName(siteuser.getLastName());
+			mngd.setPassword(siteuser.getPassword());
+			mngd.setAccountStatus(siteuser.getAccountStatus());
+			mngd.setJobTitle(siteuser.getJobTitle());
 			mngd.setSalary(siteuser.getSalary());
 			mngd.setNumVisits(siteuser.getNumVisits());
 			mngd.setUserUrl(siteuser.getUserUrl());
@@ -56,16 +55,16 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		return mngd;
 	}
 
-	public boolean deleteSiteuser(int id) {
+	public boolean removeSiteuser(int id) {
 		try {
-			em.getTransaction().begin();
-
-			Siteuser addy = em.find(Siteuser.class, id);
-			em.remove(addy);
+			Siteuser siteuser = em.find(Siteuser.class, id);
+			em.remove(siteuser);
+//			em.flush();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
-
+		
 		return true;
 	}
 

@@ -10,5 +10,6 @@ public interface SiteuserDAO {
 	public List<Siteuser> findAll();
 	public Siteuser updateSiteuser(Siteuser siteuser);
 	public Siteuser addSiteuser(Siteuser siteuser);
+	public boolean removeSiteuser(int id);
 	
 }
