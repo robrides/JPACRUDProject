@@ -16,8 +16,10 @@
 </head>
 <body>
 	<div class="container">
-		<div>
-			<h5>${siteuser.firstName}${siteuser.lastName}</h5>
+		<div><div class="list-group-item-heading">
+			<h5>${siteuser.firstName} ${siteuser.lastName}</h5>
+			</div>
+			<div class = "list-group-item-text">
 			<ul class="list-group">
 				<li class="list-group-item">${siteuser.userType}</li>
 				<li class="list-group-item">${siteuser.username}</li>
@@ -27,13 +29,23 @@
 				<li class="list-group-item">${siteuser.jobTitle}</li>
 				<li class="list-group-item">${siteuser.salary}</li>
 				<li class="list-group-item">${siteuser.numVisits}</li>
-				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s site</a></li>
+				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
+						site</a></li>
 			</ul>
+			</div>
 		</div>
-		<form class="btn btn-secondary" class="form-control" action="/"
-			method="GET">
+		<form class="btn btn-secondary" class="form-control" action="updateSiteuser.do" method="POST">
+
+			<input type="hidden" name="suid" class="btn btn-primary" value="${siteuser.id}" />
+			<input type="submit" value="Update User"/>
+		</form>
+				<form class="btn btn-secondary" class="form-control" action="/" method="GET">
 			<input type="submit" class="btn btn-primary" value="Home" />
 		</form>
+				<form class="btn btn-secondary" class="form-control" action="addSiteuser.do" method="GET">
+			<input type="submit" class="btn btn-primary" value="Add User" />
+		</form>
+
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

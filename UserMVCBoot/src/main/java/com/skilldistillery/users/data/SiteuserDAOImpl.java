@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.users.entities.Siteuser;
 
 @Service
+@Transactional
 public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@PersistenceContext
@@ -17,8 +19,8 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@Override
 	public Siteuser findById(int id) {
-		Siteuser film = em.find(Siteuser.class, id);
-		return film;
+		Siteuser siteuser = em.find(Siteuser.class, id);
+		return siteuser;
 	}
 
 	@Override
@@ -29,10 +31,10 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		return siteuser;
 	}
 
-	public boolean updateSiteuser(int id, Siteuser siteuser) {
+	public Siteuser updateSiteuser(Siteuser siteuser) {
 		Siteuser mngd;
 		try {
-			mngd = em.find(Siteuser.class, id);
+			mngd = em.find(Siteuser.class, siteuser.getId());
 			mngd.setUsername(siteuser.getEmail());
 			mngd.setEmail(siteuser.getEmail());
 			mngd.setFirstName(siteuser.getEmail());
@@ -44,11 +46,14 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 			mngd.setNumVisits(siteuser.getNumVisits());
 			mngd.setUserUrl(siteuser.getUserUrl());
 			mngd.setUserType(siteuser.getUserType());
+			em.persist(mngd);
+			em.flush();
+			
 		} catch (Exception e) {
-			return false;
+			return null;
 		}
 
-		return true;
+		return mngd;
 	}
 
 	public boolean deleteSiteuser(int id) {
@@ -62,6 +67,17 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		}
 
 		return true;
+	}
+
+	@Override
+	public Siteuser addSiteuser(Siteuser siteuser) {
+		try {
+		em.persist(siteuser);
+		em.flush();
+		} catch (Exception e) {
+			return null;
+		}
+		return siteuser;
 	}
 
 }

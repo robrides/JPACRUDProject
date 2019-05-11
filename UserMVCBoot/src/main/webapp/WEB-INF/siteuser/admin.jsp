@@ -17,16 +17,23 @@
 <body>
 	<div class="container">
 		<div class="form-group">
+			<form class="btn btn-secondary" class="form-control" action="/"
+				method="GET">
+				<input type="submit" value="Home">
+			</form>
+			<form class="btn btn-secondary" class="form-control" action="addSiteuser.do"
+				method="GET">
+				<input type="submit" value="Add User">
+			</form>
 			<form class="btn btn-secondary" class="form-control"
 				action="getSiteuser.do" method="GET">
 				User ID: <input type="text" name="Suid" /> <input type="submit"
 					class="btn btn-primary" value="Show User" />
 			</form>
-		</div>
 		<c:choose>
 			<c:when test="${! empty siteuserList }">
-				<ul class="list-group">
 					<h4>Site Users...</h4>
+					<ul class="list-group">
 					<c:forEach var="siteuser" items="${siteuserList}">
 						<li class="list-group-item list-group-item-action">* <a
 							href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName } ${siteuser.lastName }</a></li>
@@ -35,6 +42,7 @@
 				<br>
 			</c:when>
 		</c:choose>
+		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

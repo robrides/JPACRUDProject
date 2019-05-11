@@ -6,7 +6,9 @@ import com.skilldistillery.users.entities.Siteuser;
 
 public interface SiteuserDAO {
 
-	Siteuser findById(int id);
-	List<Siteuser> findAll();
+	public Siteuser findById(int id);
+	public List<Siteuser> findAll();
+	public Siteuser updateSiteuser(Siteuser siteuser);
+	public Siteuser addSiteuser(Siteuser siteuser);
 	
 }

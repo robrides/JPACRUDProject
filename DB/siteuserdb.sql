@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `siteuser` (
   `first_name` VARCHAR(20) NULL,
   `last_name` VARCHAR(40) NULL,
   `password` VARCHAR(60) NULL,
-  `account_status` VARCHAR(10) NULL DEFAULT 'active',
+  `account_status` VARCHAR(15) NULL DEFAULT 'active',
   `job_title` VARCHAR(45) NULL,
   `salary` INT NULL DEFAULT 0,
   `num_visits` INT NULL DEFAULT 0,
