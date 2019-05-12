@@ -1,14 +1,12 @@
 package com.skilldistillery.users.entities;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Siteuser {
@@ -35,7 +33,6 @@ public class Siteuser {
 	@Column(name="user_type")
 	private String userType;
 	@Column(name="last_login")
-	@Temporal(TemporalType.DATE)
 	private Date lastLogin;
 	
 	

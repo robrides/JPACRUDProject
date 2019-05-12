@@ -21,27 +21,31 @@
 				method="GET">
 				<input type="submit" value="Home">
 			</form>
-			<form class="btn btn-secondary" class="form-control" action="addSiteuser.do"
-				method="GET">
+			<form class="btn btn-secondary" class="form-control"
+				action="register.do" method="GET">
 				<input type="submit" value="Add User">
 			</form>
 			<form class="btn btn-secondary" class="form-control"
 				action="getSiteuser.do" method="GET">
-				User ID: <input type="text" name="Suid" /> <input type="submit"
+				User ID: <input type="text" name="suid" /> <input type="submit"
 					class="btn btn-primary" value="Show User" />
 			</form>
-		<c:choose>
-			<c:when test="${! empty siteuserList }">
+
+				<c:if test="${! empty error}">
+					<p>
+					<h2>${error}</h2>
+				</c:if>
+				<c:if test="${! empty siteuserList }">
 					<h5>Site Users...</h5>
 					<ul class="list-group">
-					<c:forEach var="siteuser" items="${siteuserList}">
-						<li class="list-group-item list-group-item-action">
-						<a href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName } ${siteuser.lastName }</a></li>
-					</c:forEach>
-				</ul>
-				<br>
-			</c:when>
-		</c:choose>
+						<c:forEach var="siteuser" items="${siteuserList}">
+							<li class="list-group-item list-group-item-action"><a
+								href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName }
+									${siteuser.lastName }</a></li>
+						</c:forEach>
+					</ul>
+					<br>
+				</c:if>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

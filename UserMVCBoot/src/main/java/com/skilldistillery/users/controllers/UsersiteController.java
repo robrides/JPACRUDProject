@@ -28,28 +28,26 @@ public class UsersiteController {
 		model.addAttribute("siteuserList", siteuserDAO.findAll());
 	  return "WEB-INF/siteuser/admin.jsp";
 	}
+	
 	@RequestMapping(path="updateSiteuser.do", method = RequestMethod.POST)
 	public String updateSiteuser(Model model, int suid) {
 		model.addAttribute("siteuser", siteuserDAO.findById(suid));
 		return "WEB-INF/siteuser/editsiteuser.jsp";
 	}
-	@RequestMapping(path="addSiteuser.do", method = RequestMethod.GET)
+	
+	@RequestMapping(path="register.do", method = RequestMethod.GET)
 	public String addSiteuser(Model model) {
 		Siteuser siteuser = new Siteuser();
 		model.addAttribute(siteuser);
-		return "WEB-INF/siteuser/addsiteuser.jsp";
+		return "WEB-INF/siteuser/register.jsp";
 	}
+	
 	@RequestMapping(path="deleteSiteuser.do", method = RequestMethod.POST)
 	public String deleteSiteuser(Model model, int suid) {
 		System.out.println("Siteuser ID: " + suid);
 		model.addAttribute("success", siteuserDAO.removeSiteuser(suid));
 		return "WEB-INF/siteuser/deletesuccess.jsp";
 	}
-//	@RequestMapping(path="saveSiteuser.do", method = RequestMethod.POST)
-//	public String updateSiteuser(Model model, int suid, Siteuser siteuser) {
-//		model.addAttribute("siteuser", siteuserDAO.updateSiteuser(suid, siteuser));
-//		return "WEB-INF/siteuser/show.jsp";
-//	}
 	
 	@RequestMapping(path = "saveSiteuser.do", method=RequestMethod.POST)
 	public ModelAndView updateSiteuser(@ModelAttribute("siteuser")Siteuser siteuser) {
@@ -69,14 +67,16 @@ public class UsersiteController {
 	}
 	
 	  @RequestMapping(path = "getSiteuser.do", method = RequestMethod.GET)
-	  public ModelAndView getSiteuserID(@RequestParam("suid") int suid) {
-	    ModelAndView mv = new ModelAndView();
-
-	    Siteuser siteuser = siteuserDAO.findById(suid);     
-	    // film is unmanaged after it is outside of the transaction that exists in the DAO
-
-	    mv.addObject("siteuser", siteuser);
-	    mv.setViewName("WEB-INF/siteuser/show.jsp");
-	    return mv;
+	  public String getSiteuserID(Model model, int suid) {
+	    Siteuser siteuser = siteuserDAO.findById(suid); 
+	    if(siteuser != null) {
+	    	model.addAttribute(siteuser);
+	    return "WEB-INF/siteuser/show.jsp";
+	    }
+	    else {
+	    	model.addAttribute("error", "User not found.");
+			model.addAttribute("siteuserList", siteuserDAO.findAll());
+	    	return "WEB-INF/siteuser/admin.jsp";
+	    }
 	  }
 }

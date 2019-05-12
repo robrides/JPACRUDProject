@@ -26,7 +26,6 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	@Override
 	public List<Siteuser> findAll() {
 		String jpql = "select siteuser from Siteuser siteuser";
-
 		List<Siteuser> siteuser = em.createQuery(jpql, Siteuser.class).getResultList();
 		return siteuser;
 	}
@@ -45,6 +44,7 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 			mngd.setNumVisits(siteuser.getNumVisits());
 			mngd.setUserUrl(siteuser.getUserUrl());
 			mngd.setUserType(siteuser.getUserType());
+			mngd.setLastLogin(siteuser.getLastLogin());
 			em.persist(mngd);
 			em.flush();
 			
@@ -59,9 +59,7 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		try {
 			Siteuser siteuser = em.find(Siteuser.class, id);
 			em.remove(siteuser);
-//			em.flush();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -70,6 +68,7 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@Override
 	public Siteuser addSiteuser(Siteuser siteuser) {
+		System.out.println(siteuser);
 		try {
 		em.persist(siteuser);
 		em.flush();
