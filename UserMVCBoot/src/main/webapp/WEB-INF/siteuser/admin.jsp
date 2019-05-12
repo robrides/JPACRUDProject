@@ -7,36 +7,43 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css" /> --%>
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<style type="text/css">
+<%@ include file="/WEB-INF/css/styleregister.css" %>
+</style>
+
 <meta charset="UTF-8">
-<title>Boot MVC Site Users</title>
+<title>Boot MVC Site Register</title>
 </head>
 <body>
-	<div class="container">
-		<div class="form-group">
-			<form class="btn btn-secondary" class="form-control" action="/"
-				method="GET">
-				<input type="submit" value="Home">
-			</form>
-			<form class="btn btn-secondary" class="form-control"
-				action="register.do" method="GET">
-				<input type="submit" value="Add User">
-			</form>
-			<form class="btn btn-secondary" class="form-control"
-				action="getSiteuser.do" method="GET">
-				User ID: <input type="text" name="suid" /> <input type="submit"
-					class="btn btn-primary" value="Show User" />
-			</form>
-
-				<c:if test="${! empty error}">
-					<p>
-					<h2>${error}</h2>
-				</c:if>
+	<div class="container" style="width: 24rem;">
+		<div class="card bg-light" style="width: 24rem;">
+			<article class="card-body mx-auto" style="max-width: 5000px;">
 				<c:if test="${! empty siteuserList }">
-					<h5>Site Users...</h5>
+					<h4 class="card-title mt-3 text-center">Site Users</h4>
+									<div class="form-group">
+					<form action="/" method="GET">
+						<input class="btn btn-primary btn-block" type="submit"
+							value="Home">
+					</form>
+				</div>
+				<div class="form-group">
+					<form action="register.do" method="GET">
+						<input class="btn btn-primary btn-block" type="submit"
+							value="Add User">
+					</form>
+				</div>
+				<div class="form-group input-group">
+
+					<form class="btn btn-secondary" class="form-control"
+						action="getSiteuser.do" method="GET">
+						User ID: <input type="text" name="suid" /> <input type="submit"
+							class="btn btn-primary btn-block" value="Show User" />
+					</form>
+				</div>
 					<ul class="list-group">
 						<c:forEach var="siteuser" items="${siteuserList}">
 							<li class="list-group-item list-group-item-action"><a
@@ -46,8 +53,17 @@
 					</ul>
 					<br>
 				</c:if>
+				<c:if test="${! empty error }">
+					<h5>${error }</h5>
+				</c:if>
+
+			</article>
 		</div>
 	</div>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -59,5 +75,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

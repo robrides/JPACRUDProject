@@ -16,7 +16,7 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-
+	
 	@Override
 	public Siteuser findById(int id) {
 		Siteuser siteuser = em.find(Siteuser.class, id);
@@ -25,7 +25,6 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	@Override
 	public Siteuser findByUsernamePwd(String username, String password) {
 		String jpql = "select siteuser from Siteuser siteuser WHERE siteuser.password = :passwordBind AND siteuser.username = :usrnameBind";
-		System.out.println(jpql);
 		List<Siteuser> siteuserList = em.createQuery(jpql, Siteuser.class)
 				.setParameter("usrnameBind", username)
 				.setParameter("passwordBind",password)
@@ -42,8 +41,9 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	}
 
 	public Siteuser updateSiteuser(Siteuser siteuser) {
-		Siteuser mngd = new Siteuser();
+		Siteuser mngd;
 		try {
+			mngd = em.find(Siteuser.class, siteuser.getId());
 			mngd.setUsername(siteuser.getUsername());
 			mngd.setEmail(siteuser.getEmail());
 			mngd.setFirstName(siteuser.getFirstName());
@@ -58,8 +58,9 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 			mngd.setLastLogin(siteuser.getLastLogin());
 			em.persist(mngd);
 			em.flush();
-			
+			System.out.println("in update dao method: "+mngd);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -79,7 +80,6 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@Override
 	public Siteuser addSiteuser(Siteuser siteuser) {
-		System.out.println(siteuser);
 		try {
 		em.persist(siteuser);
 		em.flush();

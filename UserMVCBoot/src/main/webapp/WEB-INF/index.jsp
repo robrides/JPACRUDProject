@@ -29,12 +29,12 @@
 <body>
 
 	<div class="container">
-		<div class="d-flex justify-content-center h-100">
-			<div class="card text-center">
+		<div class="d-flex justify-content-center h-50"  >
+			<div class="card text-center" style="height: 10rem;">
 				<div class="card-header">
 					<h3 class="card-title">Welcome!</h3>
 				</div>
-				<div class="card-body" style="width: 24rem;">
+				<div  style="width: 24rem;">
 					<form action="login" method="GET">
 							<input type="submit" value="Login"
 								class="btn float-none login_btn">
@@ -46,21 +46,6 @@
 					</div>
 					</div>
 			</div>
-		</div>
-	</div>
-	>
-	<div class="container">
-		<h1>Boot MVC Site Users</h1>
-		<div class="form-group">
-
-			<form class="btn btn-secondary" class="form-control"
-				action="admin.do" method="GET">
-				<input type="submit" class="btn btn-primary" value="Admin" />
-			</form>
-			<form class="btn btn-secondary" class="form-control"
-				action="register.do" method="GET">
-				<input type="submit" class="btn btn-primary" value="Register" />
-			</form>
 		</div>
 	</div>
 

@@ -33,10 +33,17 @@
 				<li class="list-group-item">Username: ${siteuser.username}</li>
 				<li class="list-group-item">Email: ${siteuser.email}</li>
 				<li class="list-group-item">Password: ${siteuser.password}</li>
+					<li class="list-group-item">Account status:
+						${siteuser.accountStatus}</li>
 				<li class="list-group-item">Job Title: ${siteuser.jobTitle}</li>
 				<li class="list-group-item">Salary: ${siteuser.salary}</li>
+				<c:if test="${siteuser.userType == 'Admin' }">
+					<li class="list-group-item">Number of visits:
+						${siteuser.numVisits}</li>
+				</c:if>
 				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
 						site</a></li>
+					<li class="list-group-item">User Type: ${siteuser.userType}</li>
 				<li class="list-group-item">Last Login: ${siteuser.lastLogin}</li>
 			</ul>
 		</div>
@@ -52,7 +59,26 @@
 			action="/" method="GET">
 			<input type="submit" class="btn btn-primary btn-block" value="Home" />
 		</form>
+			<form class="btn btn-primary btn-block" class="form-control"
+				action="register.do" method="GET">
+				<input type="submit" class="btn btn-primary btn-block"
+					value="Add User" />
+			</form>
+			<form class="btn btn-primary btn-block" class="form-control"
+				action="admin.do" method="GET">
+				<input type="submit" class="btn btn-primary btn-block"
+					value="Admin Console" />
+			</form>
+			<form class="btn btn-primary btn-block" class="form-control"
+				action="deleteSiteuser.do" method="POST">
+
+				<input type="hidden" name="suid"
+					class="btn btn-primary btn-block btn-danger" value="${siteuser.id}" />
+				<input type="submit" class="btn btn-primary btn-block btn-danger"
+					value="Delete User" />
+			</form>
 	</div>
+
 	<c:if test="${! empty error }">
 		<h2>${error }</h2>
 	</c:if>

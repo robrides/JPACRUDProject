@@ -11,15 +11,20 @@
 <body>
 	<c:choose>
 		<c:when test="${ success == true }">
-<h2>Success</h2>
-</c:when>
+			<h2>Success</h2>
+		</c:when>
 		<c:otherwise>
-<h2>Failed</h2>
-</c:otherwise>
+			<h2>Failed</h2>
+		</c:otherwise>
 	</c:choose>
 	<form class="btn btn-secondary" class="form-control" action="/"
 		method="GET">
 		<input type="submit" class="btn btn-primary" value="Home" />
+	</form>
+	<form class="btn btn-primary btn-block" class="form-control"
+		action="admin.do" method="GET">
+		<input type="submit" class="btn btn-primary btn-block"
+			value="Admin Console" />
 	</form>
 </body>
 </html>

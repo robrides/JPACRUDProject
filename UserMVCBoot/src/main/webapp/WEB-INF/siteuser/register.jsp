@@ -70,7 +70,6 @@
 						</div>
 						<form:select path="jobTitle" class="form-control"
 							value="Select...">
-							<option>Select job type</option>
 							<option>Software Engineer</option>
 							<option>Database Administrator</option>
 							<option>System Administrator</option>
@@ -78,7 +77,7 @@
 							<option>Designer</option>
 							<option>Manager</option>
 							<option>Chief Executive Officer</option>
-							<option>other</option>
+							<option selected="selected">other</option>
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
@@ -90,8 +89,8 @@
 						</div>
 						<form:select path="accountStatus" class="form-control"
 							placeholder="Select...">
-							<option>Select account status</option>
-							<option>Active</option>
+							<option disabled>Select account status</option>
+							<option selected="selected">Active</option>
 							<option>Inactive</option>
 							<option>Archived</option>
 						</form:select>
@@ -137,7 +136,7 @@
 						<form:select path="userType" class="form-control"
 							placeholder="Select...">
 							<option>Select account type</option>
-							<option>Customer</option>
+							<option selected="selected">Customer</option>
 							<option>Employee</option>
 							<option>Admin</option>
 						</form:select>
