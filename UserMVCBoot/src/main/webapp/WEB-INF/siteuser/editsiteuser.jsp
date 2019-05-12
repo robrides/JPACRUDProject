@@ -29,7 +29,7 @@
 				<form:form action="saveSiteuser.do" method="POST"
 					modelAttribute="siteuser">
 
-					<div class="form-group input-group">
+<%-- 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i
 								class="fa fa-user-circle"></i>
@@ -37,7 +37,9 @@
 						</div>
 						<form:input path="id" name="" class="form-control"
 							placeholder="ID" type="text" readOnly="true" />
-					</div>
+					</div> --%>
+					
+					<input type="hidden" name="id" value="<c:out value="${ siteuser.id }"/>" />
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -87,7 +89,7 @@
 						</div>
 						<form:select path="jobTitle" class="form-control" 
 							value="Select...">
-							<option selected disabled >${siteuser.jobTitle }</option>
+							<option selected>${siteuser.jobTitle }</option>
 							<option>Software Engineer</option>
 							<option>Database
 								Administrator</option>
@@ -102,31 +104,13 @@
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
 
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="accountStatus" class="form-control"
-								placeholder="Select...">
-								<option selected disabled >${siteuser.accountStatus }</option>
-								<option >Active</option>
-								<option >Inactive</option>
-								<option >Archived</option>
-							</form:select>
-						</div>
-					</c:when>
-					<c:otherwise>
-					<input type="hidden" name="accountStatus" value="<c:out value="${ siteuser.accountStatus }"/>" />
-					</c:otherwise>
-					</c:choose>
+					<input type="hidden" name="accountStatus" value="<c:out value="accountStatus"/>" />
+
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<br> Salary <span class="input-group-text"> <i
+							<br> Salary $ <span class="input-group-text"> <i
 								class="fa money-bill"></i>
 							</span>
 						</div>
@@ -134,24 +118,9 @@
 							type="number" />
 					</div>
 					<!-- form-group// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
 
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<br> # Visits <span class="input-group-text"> <i
-									class="fa fa-hashtag"></i>
-								</span>
-							</div>
-							<form:input path="numVisits" name="" class="form-control"
-								type="number" />
-						</div>
-					</c:when>
-					<c:otherwise>
 					<input type="hidden" name="numVisits" value="<c:out value="${ siteuser.numVisits+1 }"/>" />
-					</c:otherwise>
-					
-					</c:choose>
+
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -162,28 +131,9 @@
 							placeholder="Website URL" type="text" />
 					</div>
 					<!-- form-group// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
 
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="userType" class="form-control"
-								placeholder="Select...">
-								<option selected disabled >${siteuser.userType }</option>
-								<option>Customer</option>
-								<option>Employee</option>
-								<option>Admin</option>
-							</form:select>
-						</div>
-						
-					</c:when>
-					<c:otherwise>
 					<input type="hidden" name="userType" value="<c:out value="${ siteuser.userType }"/>" />
-					</c:otherwise>
-						</c:choose>
+
 						<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -193,6 +143,7 @@
 						<form:input path="password" class="form-control"
 							placeholder="Create password" type="password" />
 					</div>
+					
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block"
 							value="Update Account" />

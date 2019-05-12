@@ -2,6 +2,7 @@ package com.skilldistillery.users.controllers;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +36,19 @@ public class UsersiteController {
 		return "WEB-INF/siteuser/editsiteuser.jsp";
 	}
 
+	@RequestMapping(path = "adminUpdateSiteuser.do", method = RequestMethod.POST)
+	public String adminUpdateSiteuser(Model model, int suid) {
+		model.addAttribute("siteuser", siteuserDAO.findById(suid));
+		return "WEB-INF/siteuser/editsiteuseradmin.jsp";
+	}
+
 	@RequestMapping(path = "register.do", method = RequestMethod.GET)
 	public String addSiteuser(Model model) {
 		Siteuser siteuser = new Siteuser();
 		model.addAttribute(siteuser);
 		return "WEB-INF/siteuser/register.jsp";
 	}
+
 	@RequestMapping(path = "registeradmin.do", method = RequestMethod.GET)
 	public String adminAddSiteuser(Model model) {
 		Siteuser siteuser = new Siteuser();
@@ -58,20 +66,28 @@ public class UsersiteController {
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String loginSiteuser(Model model, Siteuser siteuser) {
 		Siteuser loggedinUser = siteuserDAO.findByUsernamePwd(siteuser.getUsername(), siteuser.getPassword());
-		model.addAttribute(loggedinUser);
 
-		Calendar currenttime = Calendar.getInstance();
-		Date sqlDate = new Date((currenttime.getTime()).getTime());
-		loggedinUser.setLastLogin(sqlDate);
-		loggedinUser = siteuserDAO.updateSiteuser(loggedinUser);
+		if (loggedinUser != null) {
 
-		if (loggedinUser.getUserType() == null) {
-			return "WEB-INF/siteuser/show.jsp";
-		} else if (loggedinUser.getUserType().equals("Admin")) {
-			return "WEB-INF/siteuser/showadmin.jsp";
+			Calendar currenttime = Calendar.getInstance();
+			Date sqlDate = new Date((currenttime.getTime()).getTime());
+			loggedinUser.setLastLogin(sqlDate);
+			loggedinUser.setNumVisits(loggedinUser.getNumVisits()+1);
+			loggedinUser = siteuserDAO.updateSiteuser(loggedinUser);
+
+			model.addAttribute(loggedinUser);
+			if (loggedinUser.getUserType() == null) {
+				return "WEB-INF/siteuser/show.jsp";
+			} else if (loggedinUser.getUserType().equals("Admin")) {
+				return "WEB-INF/siteuser/showadmin.jsp";
+			} else {
+				return "WEB-INF/siteuser/show.jsp";
+			}
 		} else {
-			return "WEB-INF/siteuser/show.jsp";
+			model.addAttribute("error", "Account could not be verified. Please try again.");
+			return "WEB-INF/siteuser/login.jsp";
 		}
+
 	}
 
 	@RequestMapping(path = "deleteSiteuser.do", method = RequestMethod.POST)
@@ -82,19 +98,29 @@ public class UsersiteController {
 
 	@RequestMapping(path = "saveSiteuser.do", method = RequestMethod.POST)
 	public String saveSiteuser(Model model, Siteuser siteuser) {
+		
+		List<Siteuser> suserList = siteuserDAO.findAll();
+		
+		for (Siteuser siteuser2 : suserList) {
+			if (siteuser2.getEmail().equals(siteuser.getEmail()) &&
+					siteuser2.getId() != siteuser.getId()) {
+				model.addAttribute("error", "Email is already in use. Choose another email.");
+				return "WEB-INF/siteuser/editsiteuser.jsp";
+			}
+		}
 		Siteuser savedUser = siteuser;
-		System.out.println("in controller: " + siteuser);
+		
 		if (siteuser != null && siteuser.getId() == 0) {
-			System.out.println("in controller not null if: " + siteuser);
 			savedUser = siteuserDAO.addSiteuser(siteuser);
 			model.addAttribute("siteuser", savedUser);
-		} else if (siteuser != null && siteuser.getId() != 0){
+		} else if (siteuser != null && siteuser.getId() != 0) {
 			savedUser = siteuserDAO.updateSiteuser(siteuser);
 			model.addAttribute("siteuser", savedUser);
 		} else {
 			model.addAttribute("error", "Error encountered. Operation aborted.");
 			return "WEB-INF/siteuser/editsiteuser.jsp";
 		}
+
 		if (savedUser.getUserType() == null) {
 			model.addAttribute("siteuser", savedUser);
 			model.addAttribute("error", "Dropdown fields have not been selected");
@@ -104,6 +130,41 @@ public class UsersiteController {
 			return "WEB-INF/siteuser/showadmin.jsp";
 		}
 		return "WEB-INF/siteuser/show.jsp";
+
+	}
+
+	@RequestMapping(path = "adminSaveSiteuser.do", method = RequestMethod.POST)
+	public String adminSaveSiteuser(Model model, Siteuser siteuser) {
+		
+		List<Siteuser> suserList = siteuserDAO.findAll();
+		
+		for (Siteuser siteuser2 : suserList) {
+			if (siteuser2.getEmail().equals(siteuser.getEmail()) &&
+					siteuser2.getId() != siteuser.getId()) {
+				model.addAttribute("error", "Email is already in use. Choose another email.");
+				return "WEB-INF/siteuser/editsiteuseradmin.jsp";
+			}
+		}
+		Siteuser savedUser = siteuser;
+		
+		if (siteuser != null && siteuser.getId() == 0) {
+			savedUser = siteuserDAO.addSiteuser(siteuser);
+			model.addAttribute("siteuser", savedUser);
+		} else if (siteuser != null && siteuser.getId() != 0) {
+			savedUser = siteuserDAO.updateSiteuser(siteuser);
+			model.addAttribute("siteuser", savedUser);
+		} else {
+			model.addAttribute("error", "Error encountered. Operation aborted.");
+			return "WEB-INF/siteuser/editsiteuseradmin.jsp";
+		}
+
+		if (savedUser.getUserType() == null) {
+			model.addAttribute("siteuser", savedUser);
+			model.addAttribute("error", "Dropdown fields have not been selected");
+			return "WEB-INF/siteuser/editsiteuseradmin.jsp";
+		}
+
+		return "WEB-INF/siteuser/showadmin.jsp";
 
 	}
 

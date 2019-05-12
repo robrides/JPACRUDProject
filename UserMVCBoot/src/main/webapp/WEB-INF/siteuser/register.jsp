@@ -31,7 +31,7 @@
 								class="fa fa-user-circle"></i>
 							</span>
 						</div>
-						<form:input path="firstName" name="" class="form-control"
+						<form:input autofocus="autofocus" path="firstName" name="" class="form-control"
 							placeholder="First name" type="text" />
 					</div>
 					<!-- form-group// -->

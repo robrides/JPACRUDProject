@@ -22,9 +22,13 @@
 	<div class="container" style="width: 24rem;">
 		<div class="card bg-light" style="width: 24rem;">
 			<article class="card-body mx-auto" style="max-width: 500px;">
-				<c:if test="${! empty siteuserList }">
-					<h4 class="card-title mt-3 text-center">Site Users</h4>
-									<div class="form-group">
+				<h4 class="card-title mt-3 text-center">
+				<c:if test="${! empty error }">
+					${error }
+					<br><br>				
+				</c:if>			
+				Site Users</h4>
+				<div class="form-group">
 					<form action="/" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"
 							value="Home">
@@ -36,14 +40,15 @@
 							value="Add User">
 					</form>
 				</div>
-				<div class="form-group input-group">
+				<c:if test="${! empty siteuserList }">
+					<div class="form-group input-group">
 
-					<form class="btn btn-secondary" class="form-control"
-						action="getSiteuser.do" method="GET">
-						User ID: <input type="text" name="suid" /> <input type="submit"
-							class="btn btn-primary btn-block" value="Show User" />
-					</form>
-				</div>
+						<form class="btn btn-secondary" class="form-control"
+							action="getSiteuser.do" method="GET">
+							User ID: <input type="text" name="suid" /> <input type="submit"
+								class="btn btn-primary btn-block" value="Show User" />
+						</form>
+					</div>
 					<ul class="list-group">
 						<c:forEach var="siteuser" items="${siteuserList}">
 							<li class="list-group-item list-group-item-action"><a
@@ -53,10 +58,6 @@
 					</ul>
 					<br>
 				</c:if>
-				<c:if test="${! empty error }">
-					<h5>${error }</h5>
-				</c:if>
-
 			</article>
 		</div>
 	</div>

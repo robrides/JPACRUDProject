@@ -29,15 +29,13 @@
 		<div class="list-group-item-text">
 			<ul class="list-group">
 				<li class="list-group-item"><h5>${siteuser.firstName}${' '}${siteuser.lastName}</h5></li>
-				<li class="list-group-item">User Type: ${siteuser.userType}</li>
 				<li class="list-group-item">Username: ${siteuser.username}</li>
 				<li class="list-group-item">Email: ${siteuser.email}</li>
 				<li class="list-group-item">Password: ${siteuser.password}</li>
 				<li class="list-group-item">Job Title: ${siteuser.jobTitle}</li>
-				<li class="list-group-item">Salary: ${siteuser.salary}</li>
+				<li class="list-group-item">Salary: $${siteuser.salary}</li>
 				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
 						site</a></li>
-				<li class="list-group-item">Last Login: ${siteuser.lastLogin}</li>
 			</ul>
 		</div>
 

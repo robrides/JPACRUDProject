@@ -28,7 +28,6 @@
 		</div>
 		<div class="list-group-item-text">
 			<ul class="list-group">
-
 				<c:if test="${! empty error }">
 					<h2>${error }</h2>
 				</c:if>
@@ -49,17 +48,16 @@
 				<li class="list-group-item">Last Login: ${siteuser.lastLogin}</li>
 			</ul>
 		</div>
-
 		<form class="btn btn-primary btn-block" class="form-control"
-			action="updateSiteuser.do" method="POST">
+			action="/" method="GET">
+			<input type="submit" class="btn btn-primary btn-block" value="Home" />
+		</form>
+				<form class="btn btn-primary btn-block" class="form-control"
+			action="adminUpdateSiteuser.do" method="POST">
 
 			<input type="hidden" name="suid" class="btn btn-primary btn-block"
 				value="${siteuser.id}" /> <input type="submit"
 				class="btn btn-primary btn-block" value="Update Account" />
-		</form>
-		<form class="btn btn-primary btn-block" class="form-control"
-			action="/" method="GET">
-			<input type="submit" class="btn btn-primary btn-block" value="Home" />
 		</form>
 		<form class="btn btn-primary btn-block" class="form-control"
 			action="registeradmin.do" method="GET">

@@ -14,7 +14,7 @@ public class Siteuser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String username;
+	private String username; 
 	private String email;
 	@Column(name="first_name")
 	private String firstName;
@@ -22,18 +22,18 @@ public class Siteuser {
 	private String lastName;
 	private String password;
 	@Column(name="account_status")
-	private String accountStatus;
+	private String accountStatus; //admin view only
 	@Column(name="job_title")
 	private String jobTitle;
 	private int salary;
 	@Column(name="num_visits")
-	private int numVisits;
+	private int numVisits;  // admin view only
 	@Column(name="user_url")
 	private String userUrl;
 	@Column(name="user_type")
-	private String userType;
+	private String userType;  // admin view only
 	@Column(name="last_login")
-	private Date lastLogin;
+	private Date lastLogin;  // admin view only
 	
 	
 	public Date getLastLogin() {

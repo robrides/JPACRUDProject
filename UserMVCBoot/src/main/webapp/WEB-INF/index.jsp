@@ -36,7 +36,7 @@
 				</div>
 				<div  style="width: 24rem;">
 					<form action="login" method="GET">
-							<input type="submit" value="Login"
+							<input autofocus="autofocus" type="submit" value="Login"
 								class="btn float-none login_btn">
 						</form>
 				</div>

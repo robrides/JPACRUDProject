@@ -16,21 +16,23 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public Siteuser findById(int id) {
 		Siteuser siteuser = em.find(Siteuser.class, id);
 		return siteuser;
 	}
+
 	@Override
 	public Siteuser findByUsernamePwd(String username, String password) {
 		String jpql = "select siteuser from Siteuser siteuser WHERE siteuser.password = :passwordBind AND siteuser.username = :usrnameBind";
-		List<Siteuser> siteuserList = em.createQuery(jpql, Siteuser.class)
-				.setParameter("usrnameBind", username)
-				.setParameter("passwordBind",password)
-				.getResultList();
-		
-		return siteuserList.get(0);
+		List<Siteuser> siteuserList = em.createQuery(jpql, Siteuser.class).setParameter("usrnameBind", username)
+				.setParameter("passwordBind", password).getResultList();
+		if (siteuserList.size() != 0) {
+			return siteuserList.get(0);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -73,15 +75,15 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	@Override
 	public Siteuser addSiteuser(Siteuser siteuser) {
 		try {
-		em.persist(siteuser);
-		em.flush();
+			em.persist(siteuser);
+			em.flush();
 		} catch (Exception e) {
 			return null;
 		}

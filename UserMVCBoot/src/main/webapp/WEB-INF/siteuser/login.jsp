@@ -33,9 +33,8 @@
 				<div class="card-header">
 					<h3>Sign In</h3>
 					<div class="d-flex justify-content-end social_icon">
-						<span><i class="fab fa-facebook-square"></i></span> <span><i
-							class="fab fa-google-plus-square"></i></span> <span><i
-							class="fab fa-twitter-square"></i></span>
+						<span><i class="fab fa-facebook-square"></i></span> <span><i class="fab fa-google-plus-square"></i></span> 
+						<span><i class="fab fa-twitter-square"></i></span>
 					</div>
 				</div>
 				<div class="card-body">
@@ -44,7 +43,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<form:input path="username" class="form-control" placeholder="Enter username" />
+						<form:input autofocus="autofocus" path="username" class="form-control" placeholder="Enter username" />
 						
 					</div>
 					<div class="input-group form-group">
@@ -62,7 +61,12 @@
 				</form:form>
 				</div>
 				<div class="card-footer">
-					<div class="d-flex justify-content-center links">
+					<div class="d-flex justify-content-center links text-warning font-weight-bold" >
+						<c:if test="${! empty error }">
+							${error }
+						</c:if>
+					</div>
+					<div class="d-flex justify-content-center text-white">
 						Don't have an account?<a href="register.do">Sign Up</a>
 					</div>
 					<!-- 				<div class="d-flex justify-content-center">
