@@ -21,7 +21,7 @@
 <body>
 	<div class="container" style="width: 24rem;">
 		<div class="card bg-light" style="width: 24rem;">
-			<article class="card-body mx-auto" style="max-width: 5000px;">
+			<article class="card-body mx-auto" style="max-width: 500px;">
 				<c:if test="${! empty siteuserList }">
 					<h4 class="card-title mt-3 text-center">Site Users</h4>
 									<div class="form-group">
@@ -31,7 +31,7 @@
 					</form>
 				</div>
 				<div class="form-group">
-					<form action="register.do" method="GET">
+					<form action="registeradmin.do" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"
 							value="Add User">
 					</form>

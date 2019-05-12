@@ -41,6 +41,12 @@ public class UsersiteController {
 		model.addAttribute(siteuser);
 		return "WEB-INF/siteuser/register.jsp";
 	}
+	@RequestMapping(path = "registeradmin.do", method = RequestMethod.GET)
+	public String adminAddSiteuser(Model model) {
+		Siteuser siteuser = new Siteuser();
+		model.addAttribute(siteuser);
+		return "WEB-INF/siteuser/registeradmin.jsp";
+	}
 
 	@RequestMapping(path = "login", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -75,22 +81,30 @@ public class UsersiteController {
 	}
 
 	@RequestMapping(path = "saveSiteuser.do", method = RequestMethod.POST)
-	public String updateSiteuser(Model model, Siteuser siteuser) {
+	public String saveSiteuser(Model model, Siteuser siteuser) {
 		Siteuser savedUser = siteuser;
-		if (siteuser != null) {
+		System.out.println("in controller: " + siteuser);
+		if (siteuser != null && siteuser.getId() == 0) {
+			System.out.println("in controller not null if: " + siteuser);
 			savedUser = siteuserDAO.addSiteuser(siteuser);
 			model.addAttribute("siteuser", savedUser);
+		} else if (siteuser != null && siteuser.getId() != 0){
+			savedUser = siteuserDAO.updateSiteuser(siteuser);
+			model.addAttribute("siteuser", savedUser);
 		} else {
-			model.addAttribute("error", "Error encountered. User not updated");
+			model.addAttribute("error", "Error encountered. Operation aborted.");
+			return "WEB-INF/siteuser/editsiteuser.jsp";
 		}
 		if (savedUser.getUserType() == null) {
+			model.addAttribute("siteuser", savedUser);
 			model.addAttribute("error", "Dropdown fields have not been selected");
 			return "WEB-INF/siteuser/editsiteuser.jsp";
 		} else if (savedUser.getUserType().equals("Admin")) {
+			model.addAttribute("siteuser", savedUser);
 			return "WEB-INF/siteuser/showadmin.jsp";
-		} else {
-			return "WEB-INF/siteuser/show.jsp";
 		}
+		return "WEB-INF/siteuser/show.jsp";
+
 	}
 
 	@RequestMapping(path = "getSiteuser.do", method = RequestMethod.GET)
@@ -102,7 +116,7 @@ public class UsersiteController {
 		} else {
 			model.addAttribute("error", "User not found.");
 			model.addAttribute("siteuserList", siteuserDAO.findAll());
-			return "WEB-INF/siteuser/showadmin.jsp";
+			return "WEB-INF/siteuser/admin.jsp";
 		}
 	}
 }

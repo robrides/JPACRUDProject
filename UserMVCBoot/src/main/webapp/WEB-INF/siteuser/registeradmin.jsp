@@ -21,28 +21,13 @@
 <body>
 	<div class="container" style="width: 24rem;">
 		<div class="card bg-light" style="width: 24rem;">
-			<article class="card-body mx-auto" style="max-width: 350px;">
-				<h4 class="card-title mt-3 text-center">Update Account</h4>
-				<c:if test="${! empty error }">
-					<h5>${error }</h5>
-				</c:if>
+			<article class="card-body mx-auto" style="max-width: 300px;">
+				<h4 class="card-title mt-3 text-center">Create Account</h4>
 				<form:form action="saveSiteuser.do" method="POST"
 					modelAttribute="siteuser">
-
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i
-								class="fa fa-user-circle"></i>
-							</span>
-						</div>
-						<form:input path="id" name="" class="form-control"
-							placeholder="ID" type="text" readOnly="true" />
-					</div>
-					<!-- form-group// -->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i
-								class="fa fa-user-circle"></i>
+							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="firstName" name="" class="form-control"
@@ -51,8 +36,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i
-								class="fa fa-user-circle"></i>
+							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="lastName" name="" class="form-control"
@@ -79,79 +63,60 @@
 							placeholder="Email address" type="email" />
 					</div>
 					<!-- form-group// -->
-
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-building"></i>
 							</span>
 						</div>
-						<form:select path="jobTitle" class="form-control" 
+						<form:select path="jobTitle" class="form-control"
 							value="Select...">
-							<option selected disabled >${siteuser.jobTitle }</option>
 							<option>Software Engineer</option>
-							<option>Database
-								Administrator</option>
-							<option>System
-								Administrator</option>
+							<option>Database Administrator</option>
+							<option>System Administrator</option>
 							<option>Accounting</option>
 							<option>Designer</option>
 							<option>Manager</option>
-							<option>Chief Executive
-								Officer</option>
-							<option>other</option>
+							<option>Chief Executive Officer</option>
+							<option selected="selected">other</option>
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
-
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="accountStatus" class="form-control"
-								placeholder="Select...">
-								<option selected disabled >${siteuser.accountStatus }</option>
-								<option >Active</option>
-								<option >Inactive</option>
-								<option >Archived</option>
-							</form:select>
+					
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-building"></i>
+							</span>
 						</div>
-					</c:when>
-					<c:otherwise>
-					<input type="hidden" name="accountStatus" value="<c:out value="${ siteuser.accountStatus }"/>" />
-					</c:otherwise>
-					</c:choose>
+						<form:select path="accountStatus" class="form-control"
+							placeholder="Select...">
+							<option disabled>Select account status</option>
+							<option selected="selected">Active</option>
+							<option>Inactive</option>
+							<option>Archived</option>
+						</form:select>
+					</div>
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<br> Salary <span class="input-group-text"> <i
-								class="fa money-bill"></i>
+							<br>
+							Salary $
+							<span class="input-group-text"> <i class="fa money-bill"></i>
 							</span>
 						</div>
 						<form:input path="salary" name="" class="form-control"
 							type="number" />
 					</div>
 					<!-- form-group// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
-
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<br> # Visits <span class="input-group-text"> <i
-									class="fa fa-hashtag"></i>
-								</span>
-							</div>
-							<form:input path="numVisits" name="" class="form-control"
-								type="number" />
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<br>
+							Visits
+							<span class="input-group-text"> <i class="fa fa-hashtag"></i>
+							</span>
 						</div>
-					</c:when>
-					<c:otherwise>
-					<input type="hidden" name="numVisits" value="<c:out value="${ siteuser.numVisits+1 }"/>" />
-					</c:otherwise>
-					
-					</c:choose>
+						<form:input path="numVisits" name="" class="form-control"
+							type="number" />
+					</div>
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -162,29 +127,22 @@
 							placeholder="Website URL" type="text" />
 					</div>
 					<!-- form-group// -->
-					<c:choose>
-					<c:when test="${siteuser.userType == 'Admin' }">
-
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="userType" class="form-control"
-								placeholder="Select...">
-								<option selected disabled >${siteuser.userType }</option>
-								<option>Customer</option>
-								<option>Employee</option>
-								<option>Admin</option>
-							</form:select>
+					
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-building"></i>
+							</span>
 						</div>
-						
-					</c:when>
-					<c:otherwise>
-					<input type="hidden" name="userType" value="<c:out value="${ siteuser.userType }"/>" />
-					</c:otherwise>
-						</c:choose>
-						<!-- form-group end.// -->
+						<form:select path="userType" class="form-control"
+							placeholder="Select...">
+							<option>Select account type</option>
+							<option selected="selected">Customer</option>
+							<option>Employee</option>
+							<option>Admin</option>
+						</form:select>
+					</div>
+					<!-- form-group end.// -->
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
@@ -195,7 +153,7 @@
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block"
-							value="Update Account" />
+							value="Create Account" />
 					</div>
 					<!-- form-group// -->
 					<!-- 				<p class="text-center">

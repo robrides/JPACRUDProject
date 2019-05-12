@@ -41,7 +41,7 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	}
 
 	public Siteuser updateSiteuser(Siteuser siteuser) {
-		Siteuser mngd;
+		Siteuser mngd = siteuser;
 		try {
 			mngd = em.find(Siteuser.class, siteuser.getId());
 			mngd.setUsername(siteuser.getUsername());
@@ -58,10 +58,9 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 			mngd.setLastLogin(siteuser.getLastLogin());
 			em.persist(mngd);
 			em.flush();
-			System.out.println("in update dao method: "+mngd);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return mngd;
 		}
 
 		return mngd;

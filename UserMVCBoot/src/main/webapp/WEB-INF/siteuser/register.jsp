@@ -27,7 +27,8 @@
 					modelAttribute="siteuser">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
+							<span class="input-group-text"> <i
+								class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="firstName" name="" class="form-control"
@@ -36,7 +37,8 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
+							<span class="input-group-text"> <i
+								class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="lastName" name="" class="form-control"
@@ -81,43 +83,22 @@
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
-					
+
+					<form:hidden path="accountStatus" value="Active" name=""
+						class="form-control" />
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-building"></i>
-							</span>
-						</div>
-						<form:select path="accountStatus" class="form-control"
-							placeholder="Select...">
-							<option disabled>Select account status</option>
-							<option selected="selected">Active</option>
-							<option>Inactive</option>
-							<option>Archived</option>
-						</form:select>
-					</div>
-					<!-- form-group end.// -->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<br>
-							Salary
-							<span class="input-group-text"> <i class="fa money-bill"></i>
+							<br> Salary $ <span class="input-group-text"> <i
+								class="fa money-bill"></i>
 							</span>
 						</div>
 						<form:input path="salary" name="" class="form-control"
 							type="number" />
 					</div>
 					<!-- form-group// -->
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<br>
-							# Visits
-							<span class="input-group-text"> <i class="fa fa-hashtag"></i>
-							</span>
-						</div>
-						<form:input path="numVisits" name="" class="form-control"
-							type="number" />
-					</div>
-					<!-- form-group// -->
+					<form:hidden path="numVisits" value="1" name=""
+						class="form-control" />
+
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-link"></i>
@@ -127,22 +108,8 @@
 							placeholder="Website URL" type="text" />
 					</div>
 					<!-- form-group// -->
-					
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-building"></i>
-							</span>
-						</div>
-						<form:select path="userType" class="form-control"
-							placeholder="Select...">
-							<option>Select account type</option>
-							<option selected="selected">Customer</option>
-							<option>Employee</option>
-							<option>Admin</option>
-						</form:select>
-					</div>
-					<!-- form-group end.// -->
-
+					<form:hidden path="userType" value="Customer" name=""
+						class="form-control" />
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
