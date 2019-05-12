@@ -41,16 +41,15 @@ class UserTests {
 		Siteuser user = em.find(Siteuser.class,  1);
 		assertEquals("Larry", user.getFirstName());
 		assertEquals("Kong", user.getLastName());
-		assertEquals("username", user.getUsername());
-		assertEquals("first.last@email.com", user.getEmail());
+		assertEquals("LarryKong", user.getUsername());
+		assertEquals("Larry.Kong@email.com", user.getEmail());
 		assertEquals("passwd", user.getPassword());
-		assertEquals("active", user.getAccountStatus());
-		assertEquals("Job Title", user.getJobTitle());
+		assertEquals("Active", user.getAccountStatus());
+		assertEquals("Accounting", user.getJobTitle());
 		assertEquals(89965, user.getSalary());
-		assertEquals(10, user.getNumVisits());
+		assertEquals(0, user.getNumVisits());
 		assertEquals("http://www.robcodes.pro", user.getUserUrl());
-		assertEquals(null, user.getUserType());
-		assertEquals(null, user.getLastLogin());
+		assertEquals("Admin", user.getUserType());
 	}
 
 }
