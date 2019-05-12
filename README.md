@@ -15,7 +15,7 @@ This is a Java Persistence Application Programming Interface (JPA API) webapp wi
 
 ### UML Diagram
 
-![UML Diagram](https://github.com/robrides/BlackjackProject/blob/master/BlackjackUML.png)
+![UML Diagram](https://github.com/robrides/JPACRUDProject/blob/master/UserJPA/UserJPACRUD_UML.png)
 
 ### Entity Relationship Diagram
 ![ERD](https://github.com/alfarog1/SpringMVCFilmCRUD/blob/master/FilmSiteERDiagram.png)
