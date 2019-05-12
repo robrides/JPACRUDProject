@@ -11,5 +11,5 @@ public interface SiteuserDAO {
 	public Siteuser updateSiteuser(Siteuser siteuser);
 	public Siteuser addSiteuser(Siteuser siteuser);
 	public boolean removeSiteuser(int id);
-	
+	public Siteuser findByUsernamePwd(String username, String email);
 }

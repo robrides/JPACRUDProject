@@ -11,10 +11,6 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<!-- <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous"> -->
 <style type="text/css">
 <%@ include file="/WEB-INF/css/styleregister.css" %>
 </style>
@@ -54,12 +50,13 @@
 
 		<input type="hidden" name="suid" class="btn btn-primary btn-block"
 			value="${siteuser.id}" /> <input type="submit"
-			class="btn btn-primary btn-block" value="Update User" />
+			class="btn btn-primary btn-block" value="Update Account" />
 	</form>
 	<form class="btn btn-primary btn-block" class="form-control" action="/"
 		method="GET">
 		<input type="submit" class="btn btn-primary btn-block" value="Home" />
 	</form>
+	<c:if test="${siteuser.userType == 'Admin' }">
 	<form class="btn btn-primary btn-block" class="form-control"
 		action="register.do" method="GET">
 		<input type="submit" class="btn btn-primary btn-block" value="Add User" />
@@ -71,170 +68,12 @@
 			value="${siteuser.id}" /> <input type="submit"
 			class="btn btn-primary btn-block btn-danger" value="Delete User" />
 	</form>
+	</c:if>
 	</div>
 
 	<c:if test="${! empty error }">
 		<h2>${error }</h2>
 	</c:if>
-
-	<%-- <div class="card bg-light" style="width: 24rem;">
-		<article class="card-body mx-auto" style="max-width: 300px;">
-			<h4 class="card-title mt-3 text-center">Display Account</h4>
-			<p class="text-center">Display Account for Boot MVC Site</p>
-			<p class="divider-text"></p>
-
-			<form:form action="saveSiteuser.do" method="POST"
-				modelAttribute="siteuser">
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa vcard"></i>
-						</span>
-					</div>
-					<form:input path="firstName" name="" class="form-control-plaintext"
-						placeholder="First name" type="text" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa vcard"></i>
-						</span>
-					</div>
-					<form:input path="lastName" name="" class="form-control-plaintext"
-						placeholder="Last name" type="text" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i
-							class="fa fa-user-circle"></i>
-						</span>
-					</div>
-					<form:input path="username" name="" class="form-control-plaintext"
-						placeholder="Username" type="text" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i
-							class="fa fa-envelope-open"></i>
-						</span>
-					</div>
-					<form:input path="email" name="" class="form-control-plaintext"
-						placeholder="Email address" type="email" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-building"></i>
-						</span>
-					</div>
-					<form:select path="jobTitle" class="form-control-plaintext" value="Select...">
-						<option>Select job type</option>
-						<option>Software Engineer</option>
-						<option>Database Administrator</option>
-						<option>System Administrator</option>
-						<option>Accounting</option>
-						<option>Designer</option>
-						<option>Manager</option>
-						<option>Chief Executive Officer</option>
-						<option>other</option>
-					</form:select>
-				</div>
-				<!-- form-group end.// -->
-				<div class="form-group input-group">
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-secondary active"> <input
-							type="radio" name="accountStatus" id="active" autocomplete="off"
-							checked> Active
-						</label> <label class="btn btn-secondary"> <input type="radio"
-							name="accountStatus" id="inactive" autocomplete="off">
-							Inactive
-						</label> <label class="btn btn-secondary"> <input type="radio"
-							name="accountStatus" id="archived" autocomplete="off">
-							Archived
-						</label>
-					</div>
-				</div>
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<br>
-						<h6>Salary</h6>
-						<span class="input-group-text"> <i class="fa dollar"></i>
-						</span>
-					</div>
-					<form:input path="salary" name="" class="form-control-plaintext"
-						type="number" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<br>
-						<h6># Visits</h6>
-						<span class="input-group-text"> <i class="fa fa-hashtag"></i>
-						</span>
-					</div>
-					<form:input path="numVisits" name="" class="form-control-plaintext"
-						type="number" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-link"></i>
-						</span>
-					</div>
-					<form:input path="userUrl" name="" class="form-control-plaintext"
-						placeholder="Website URL" type="text" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-secondary active"> <input
-							type="radio" name="userType" id="customer" autocomplete="off"
-							checked> Customer
-						</label> <label class="btn btn-secondary"> <input type="radio"
-							name="userType" id="empoyee" autocomplete="off"> Employee
-						</label> <label class="btn btn-secondary"> <input type="radio"
-							name="userType" id="admin" autocomplete="off"> Admin
-						</label>
-					</div>
-				</div>
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-calendar"></i>
-						</span>
-					</div>
-					<form:input path="lastLogin" name="" class="form-control-plaintext"
-						placeholder="Last Login" type="date" />
-				</div>
-				<!-- form-group// -->
-				<div class="form-group input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-lock"></i>
-						</span>
-					</div>
-					<form:input path="password" class="form-control-plaintext"
-						placeholder="Create password" type="password" />
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-primary btn-block"
-						value="Create Account" />
-				</div>
-				<!-- form-group// -->
-				<!-- 				<p class="text-center">
-					Have an account? <a href="">Log In</a>
-				</p> -->
-			</form:form>
-			<div class="form-group">
-			<form action="/" method="GET">
-				<input class="btn btn-primary btn-block" type="submit"  value="Home" />
-			</form>
-			</div>
-		</article>
-	</div>
-	<!-- card.// -->
-
-	</div>
-	<!--container end.//--> --%>
 
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

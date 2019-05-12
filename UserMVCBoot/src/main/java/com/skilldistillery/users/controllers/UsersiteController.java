@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.users.data.SiteuserDAO;
@@ -41,29 +40,39 @@ public class UsersiteController {
 		model.addAttribute(siteuser);
 		return "WEB-INF/siteuser/register.jsp";
 	}
+	@RequestMapping(path="login", method = RequestMethod.GET)
+	public String login(Model model) {
+		Siteuser siteuser = new Siteuser();
+		model.addAttribute(siteuser);
+		return "WEB-INF/siteuser/login.jsp";
+	}
+	@RequestMapping(path="login.do", method = RequestMethod.POST)
+	public String loginSiteuser(Model model, Siteuser siteuser) {
+		Siteuser loggedinUser =siteuserDAO.findByUsernamePwd(siteuser.getUsername(), siteuser.getPassword()); 
+		model.addAttribute(loggedinUser);
+				
+		return "WEB-INF/siteuser/show.jsp";
+	}
 	
 	@RequestMapping(path="deleteSiteuser.do", method = RequestMethod.POST)
 	public String deleteSiteuser(Model model, int suid) {
-		System.out.println("Siteuser ID: " + suid);
 		model.addAttribute("success", siteuserDAO.removeSiteuser(suid));
 		return "WEB-INF/siteuser/deletesuccess.jsp";
 	}
 	
 	@RequestMapping(path = "saveSiteuser.do", method=RequestMethod.POST)
-	public ModelAndView updateSiteuser(@ModelAttribute("siteuser")Siteuser siteuser) {
-		ModelAndView mv = new ModelAndView();
+	public String updateSiteuser(Model model, Siteuser siteuser) {
 		Siteuser updatedSiteuser;
 		
 		if (siteuser != null) {
 			updatedSiteuser = siteuserDAO.updateSiteuser(siteuser);
-			mv.addObject("siteuser", updatedSiteuser);
+			model.addAttribute("siteuser", updatedSiteuser);
 		}
 		else {
-			mv.addObject("error", "Error encountered. User not updated");
+			model.addAttribute("error", "Error encountered. User not updated");
 		}
-		mv.setViewName("WEB-INF/siteuser/show.jsp");
 		
-		return mv;
+		return "WEB-INF/siteuser/show.jsp";
 	}
 	
 	  @RequestMapping(path = "getSiteuser.do", method = RequestMethod.GET)

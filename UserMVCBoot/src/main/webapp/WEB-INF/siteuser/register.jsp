@@ -11,10 +11,6 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<!-- <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous"> -->
 <style type="text/css">
 <%@ include file="/WEB-INF/css/styleregister.css" %>
 </style>
@@ -31,7 +27,7 @@
 					modelAttribute="siteuser">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa vcard"></i>
+							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="firstName" name="" class="form-control"
@@ -40,7 +36,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa vcard"></i>
+							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
 							</span>
 						</div>
 						<form:input path="lastName" name="" class="form-control"
@@ -104,8 +100,8 @@
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<br>
-							<h6>Salary${' '}</h6>
-							<span class="input-group-text"> <i class="fa dollar"></i>
+							Salary
+							<span class="input-group-text"> <i class="fa money-bill"></i>
 							</span>
 						</div>
 						<form:input path="salary" name="" class="form-control"
@@ -115,7 +111,7 @@
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<br>
-							<h6># Visits${' '}</h6>
+							# Visits
 							<span class="input-group-text"> <i class="fa fa-hashtag"></i>
 							</span>
 						</div>
@@ -177,24 +173,6 @@
 
 	</div>
 	<!--container end.//-->
-	<!-- 
-	<br>
-	<br>
-	<article class="bg-secondary mb-3">
-		<div class="card-body text-center">
-			<h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
-			<p class="h5 text-white">Components and templates  <br> for Ecommerce, marketplace, booking websites 
-and product landing pages</p>
-			<br>
-			<p>
-				<a class="btn btn-warning" target="_blank"
-					href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com
-					<i class="fa fa-window-restore "></i>
-				</a>
-			</p>
-		</div>
-		<br> <br>
-	</article> -->
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script

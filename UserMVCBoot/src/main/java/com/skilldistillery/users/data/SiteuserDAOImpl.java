@@ -22,6 +22,17 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		Siteuser siteuser = em.find(Siteuser.class, id);
 		return siteuser;
 	}
+	@Override
+	public Siteuser findByUsernamePwd(String username, String password) {
+		String jpql = "select siteuser from Siteuser siteuser WHERE siteuser.password = :passwordBind AND siteuser.username = :usrnameBind";
+		System.out.println(jpql);
+		List<Siteuser> siteuserList = em.createQuery(jpql, Siteuser.class)
+				.setParameter("usrnameBind", username)
+				.setParameter("passwordBind",password)
+				.getResultList();
+		
+		return siteuserList.get(0);
+	}
 
 	@Override
 	public List<Siteuser> findAll() {

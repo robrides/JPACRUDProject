@@ -21,49 +21,57 @@
 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	crossorigin="anonymous">
 <style type="text/css">
-<%@include file="css/style.css" %>
+ <%@include file="/WEB-INF/css/style.css" %>
 </style>
 <meta charset="UTF-8">
 <title>Boot MVC Site Users</title>
 </head>
 <body>
-
 	<div class="container">
 		<div class="d-flex justify-content-center h-100">
-			<div class="card text-center">
+			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Welcome!</h3>
+					<h3>Sign In</h3>
+					<div class="d-flex justify-content-end social_icon">
+						<span><i class="fab fa-facebook-square"></i></span> <span><i
+							class="fab fa-google-plus-square"></i></span> <span><i
+							class="fab fa-twitter-square"></i></span>
+					</div>
 				</div>
-				<div class="card-body" style="width: 24rem;">
-					<form action="login" method="GET">
-							<input type="submit" value="Login"
-								class="btn float-none login_btn">
-						</form>
+				<div class="card-body">
+ 				<form:form action="login.do" method="POST" modelAttribute="siteuser">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<form:input path="username" class="form-control" placeholder="Enter username" />
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<form:input path="password" type="password" class="form-control" placeholder="Enter password" />
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox">Remember Me
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" class="btn float-right login_btn"/>
+					</div>
+				</form:form>
 				</div>
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
 						Don't have an account?<a href="register.do">Sign Up</a>
 					</div>
-					</div>
+					<!-- 				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
-	>
-	<div class="container">
-		<h1>Boot MVC Site Users</h1>
-		<div class="form-group">
-
-			<form class="btn btn-secondary" class="form-control"
-				action="admin.do" method="GET">
-				<input type="submit" class="btn btn-primary" value="Admin" />
-			</form>
-			<form class="btn btn-secondary" class="form-control"
-				action="register.do" method="GET">
-				<input type="submit" class="btn btn-primary" value="Register" />
-			</form>
-		</div>
-	</div>
-
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script
