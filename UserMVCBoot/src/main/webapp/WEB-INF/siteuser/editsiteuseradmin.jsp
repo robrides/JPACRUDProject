@@ -175,12 +175,7 @@
 							value="Update Account" />
 					</div>
 					<!-- form-group// -->
-					
-					<input type="hidden" name="accountStatus" value="<c:out value="${ siteuser.accountStatus }"/>" />
-					<!-- 				<p class="text-center">
-					Have an account? <a href="">Log In</a>
-				</p> -->
-				</form:form>
+					</form:form>
 				<div class="form-group">
 					<form action="/" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"

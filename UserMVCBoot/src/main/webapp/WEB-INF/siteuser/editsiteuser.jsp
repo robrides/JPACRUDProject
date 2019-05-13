@@ -105,7 +105,7 @@
 					</div>
 					<!-- form-group end.// -->
 
-					<input type="hidden" name="accountStatus" value="<c:out value="accountStatus"/>" />
+					<input type="hidden" name="accountStatus" value="<c:out value="${siteuser.accountStatus }"/>" />
 
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
@@ -119,7 +119,7 @@
 					</div>
 					<!-- form-group// -->
 
-					<input type="hidden" name="numVisits" value="<c:out value="${ siteuser.numVisits+1 }"/>" />
+					<input type="hidden" name="numVisits" value="<c:out value="${siteuser.numVisits }"/>" />
 
 					<!-- form-group// -->
 					<div class="form-group input-group">
@@ -148,10 +148,6 @@
 						<input type="submit" class="btn btn-primary btn-block"
 							value="Update Account" />
 					</div>
-					<!-- form-group// -->
-					<!-- 				<p class="text-center">
-					Have an account? <a href="">Log In</a>
-				</p> -->
 				</form:form>
 				<div class="form-group">
 					<form action="/" method="GET">

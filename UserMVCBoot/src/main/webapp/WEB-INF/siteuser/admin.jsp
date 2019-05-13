@@ -40,19 +40,26 @@
 							value="Add User">
 					</form>
 				</div>
+				<div class="form-group">
+					<form action="getAllSiteusers.do" method="GET">
+						<input class="btn btn-primary btn-block" type="submit"
+							value="All Users">
+					</form>
+				</div>
 				<c:if test="${! empty siteuserList }">
 					<div class="form-group input-group">
 
 						<form class="btn btn-secondary" class="form-control"
-							action="getSiteuser.do" method="GET">
-							User ID: <input type="text" name="suid" /> <input type="submit"
-								class="btn btn-primary btn-block" value="Show User" />
+							action="getSiteuserAny.do" method="GET">
+							<input type="text" name="searchTerm" placeholder="Search Name or Id" /> <input type="submit"
+								class="btn btn-primary btn-block" value="Search User" />
 						</form>
 					</div>
 					<ul class="list-group">
 						<c:forEach var="siteuser" items="${siteuserList}">
-							<li class="list-group-item list-group-item-action"><a
-								href="getSiteuser.do?suid=${siteuser.id }">${siteuser.firstName }
+							<li class="list-group-item list-group-item-action">
+							<a href="getSiteuser.do?suid=${siteuser.id }">
+								${siteuser.firstName }
 									${siteuser.lastName }</a></li>
 						</c:forEach>
 					</ul>

@@ -103,8 +103,10 @@ public class UsersiteController {
 		
 		for (Siteuser siteuser2 : suserList) {
 			if (siteuser2.getEmail().equals(siteuser.getEmail()) &&
+					siteuser2.getId() != siteuser.getId() || 
+					siteuser2.getUsername().contentEquals(siteuser.getUsername()) &&
 					siteuser2.getId() != siteuser.getId()) {
-				model.addAttribute("error", "Email is already in use. Choose another email.");
+				model.addAttribute("error", "Account information invalid. Please try again.");
 				return "WEB-INF/siteuser/editsiteuser.jsp";
 			}
 		}
@@ -140,6 +142,8 @@ public class UsersiteController {
 		
 		for (Siteuser siteuser2 : suserList) {
 			if (siteuser2.getEmail().equals(siteuser.getEmail()) &&
+					siteuser2.getId() != siteuser.getId() || 
+					siteuser2.getUsername().contentEquals(siteuser.getUsername()) &&
 					siteuser2.getId() != siteuser.getId()) {
 				model.addAttribute("error", "Email is already in use. Choose another email.");
 				return "WEB-INF/siteuser/editsiteuseradmin.jsp";
@@ -176,6 +180,30 @@ public class UsersiteController {
 			return "WEB-INF/siteuser/showadmin.jsp";
 		} else {
 			model.addAttribute("error", "User not found.");
+			model.addAttribute("siteuserList", siteuserDAO.findAll());
+			return "WEB-INF/siteuser/admin.jsp";
+		}
+	}
+	@RequestMapping(path = "getSiteuserAny.do", method = RequestMethod.GET)
+	public String getSiteuserAny(Model model, String searchTerm) {
+		List<Siteuser> siteuserList = siteuserDAO.findByAny(searchTerm);
+		if (siteuserList.size() > 0) {
+			model.addAttribute(siteuserList);
+			return "WEB-INF/siteuser/admin.jsp";
+		} else {
+			model.addAttribute("error", "User not found.");
+			model.addAttribute("siteuserList", siteuserDAO.findAll());
+			return "WEB-INF/siteuser/admin.jsp";
+		}
+	}
+	@RequestMapping(path = "getAllSiteusers.do", method = RequestMethod.GET)
+	public String getAllSiteuser(Model model) {
+		List<Siteuser> siteuserList = siteuserDAO.findAll();
+		if (siteuserList.size() > 0) {
+			model.addAttribute(siteuserList);
+			return "WEB-INF/siteuser/admin.jsp";
+		} else {
+			model.addAttribute("error", "None found.");
 			model.addAttribute("siteuserList", siteuserDAO.findAll());
 			return "WEB-INF/siteuser/admin.jsp";
 		}

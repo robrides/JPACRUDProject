@@ -1,5 +1,6 @@
 package com.skilldistillery.users.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,25 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+
+	@Override
+	public List<Siteuser> findByAny(String searchTerm) {
+		Integer num = 0;
+		List<Siteuser> siteuserList = new ArrayList<>();
+		
+		try {
+			Integer.parseInt(searchTerm);
+			num = Integer.parseInt(searchTerm);
+			siteuserList.add(findById(num));
+		}catch (Exception e) {
+			String jpql = "select siteuser from Siteuser siteuser WHERE siteuser.firstName LIKE :searchBind or siteuser.lastName LIKE :searchBind";
+			siteuserList = em.createQuery(jpql, Siteuser.class)
+					.setParameter("searchBind", "%"+searchTerm+"%").getResultList();
+
+			return siteuserList;
+		}
+		return siteuserList;
+	}
 
 	@Override
 	public Siteuser findById(int id) {
@@ -38,8 +58,8 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 	@Override
 	public List<Siteuser> findAll() {
 		String jpql = "select siteuser from Siteuser siteuser";
-		List<Siteuser> siteuser = em.createQuery(jpql, Siteuser.class).getResultList();
-		return siteuser;
+		List<Siteuser> siteuserList = em.createQuery(jpql, Siteuser.class).getResultList();
+		return siteuserList;
 	}
 
 	public Siteuser updateSiteuser(Siteuser siteuser) {
@@ -90,4 +110,5 @@ public class SiteuserDAOImpl implements SiteuserDAO {
 		return siteuser;
 	}
 
+	
 }
