@@ -37,6 +37,7 @@
 						</div>
 						<form:input path="id" name="" class="form-control"
 							placeholder="ID" type="text" readOnly="true" />
+						<input type="hidden" name="id" value="<c:out value="${ siteuser.id }"/>" />
 					</div>
 					<!-- form-group// -->
 					<div class="form-group input-group">

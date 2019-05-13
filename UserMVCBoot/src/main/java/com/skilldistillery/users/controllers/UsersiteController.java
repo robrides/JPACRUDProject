@@ -112,7 +112,7 @@ public class UsersiteController {
 			}
 		}
 		Siteuser savedUser = siteuser;
-		
+		System.out.println(siteuser);
 		if (siteuser != null && siteuser.getId() == 0) {
 			savedUser = siteuserDAO.addSiteuser(siteuser);
 			model.addAttribute("siteuser", savedUser);
