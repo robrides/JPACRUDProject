@@ -148,7 +148,7 @@ public class UsersiteController {
 					siteuser2.getUsername().contentEquals(siteuser.getUsername()) &&
 					siteuser2.getId() != siteuser.getId()) {
 				model.addAttribute("siteuser", siteuser);
-				model.addAttribute("error", "Email is already in use. Choose another email.");
+				model.addAttribute("error", "Account information invalid. Please try again.");
 				return "WEB-INF/siteuser/editsiteuseradmin.jsp";
 			}
 		}
