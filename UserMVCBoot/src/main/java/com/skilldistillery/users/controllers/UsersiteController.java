@@ -19,7 +19,7 @@ public class UsersiteController {
 	@Autowired
 	private SiteuserDAO siteuserDAO;
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@RequestMapping(path = {"/", "home.do"}, method = RequestMethod.GET)
 	public String index() {
 		return "WEB-INF/index.jsp";
 	}

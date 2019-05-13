@@ -176,7 +176,7 @@
 					</form>
 				</div>
 				<div class="form-group">
-					<form action="/" method="GET">
+					<form action="home.do" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"
 							value="Home" />
 					</form>

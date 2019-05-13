@@ -47,7 +47,7 @@
 				class="btn btn-primary btn-block" value="Update Account" />
 		</form>
 		<form class="btn btn-primary btn-block" class="form-control"
-			action="/" method="GET">
+			action="home.do" method="GET">
 			<input type="submit" class="btn btn-primary btn-block" value="Home" />
 		</form>
 	</div>

@@ -17,7 +17,7 @@
 <h2>Failed</h2>
 </c:otherwise>
 	</c:choose>
-	<form class="btn btn-secondary" class="form-control" action="/"
+	<form class="btn btn-secondary" class="form-control" action="home.do"
 		method="GET">
 		<input type="submit" class="btn btn-primary" value="Home" />
 	</form>
