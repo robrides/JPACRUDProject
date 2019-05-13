@@ -38,7 +38,7 @@ Spring Tool Suite (STS/Eclipse), Spring MVC Framework, Java, JPA, Gradle, Tomcat
 
 ### Lessons Learned
 
-Java persistence query language is similar to SQL but overlooked nuances can slow development. TDD is key to ensure JPA mappings and queries are correct. Continue practice with Bootstrap as styling is time consuming. Learned additional syntax for use with SpringMVC and .jsp files.
+Java persistence query language is similar to SQL but overlooked nuances can slow development. TDD is key to ensure JPA mappings and queries are correct. Continue practice with Bootstrap as styling is time consuming. Learned additional syntax for use with SpringMVC and ``.jsp`` files.
 
 ### Future Improvements
 
@@ -47,4 +47,8 @@ Java persistence query language is similar to SQL but overlooked nuances can slo
 * Implement TLS (SSL) / https / server-side PKI certificates.
 * Refine styling.
 * Improve exception handling.
-* Add annotations to include @Error` as well as min and max values.
+* Add annotations to include ``@Error`` as well as min and max values.
+
+### Known Issues
+
+Please see the issue tracker for known issues.  If additional issues are discovered please open an new issue.
