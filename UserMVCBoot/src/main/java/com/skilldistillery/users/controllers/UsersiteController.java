@@ -106,6 +106,7 @@ public class UsersiteController {
 					siteuser2.getId() != siteuser.getId() || 
 					siteuser2.getUsername().contentEquals(siteuser.getUsername()) &&
 					siteuser2.getId() != siteuser.getId()) {
+				model.addAttribute("siteuser", siteuser);
 				model.addAttribute("error", "Account information invalid. Please try again.");
 				return "WEB-INF/siteuser/editsiteuser.jsp";
 			}
@@ -119,6 +120,7 @@ public class UsersiteController {
 			savedUser = siteuserDAO.updateSiteuser(siteuser);
 			model.addAttribute("siteuser", savedUser);
 		} else {
+			model.addAttribute("siteuser", siteuser);
 			model.addAttribute("error", "Error encountered. Operation aborted.");
 			return "WEB-INF/siteuser/editsiteuser.jsp";
 		}
@@ -145,6 +147,7 @@ public class UsersiteController {
 					siteuser2.getId() != siteuser.getId() || 
 					siteuser2.getUsername().contentEquals(siteuser.getUsername()) &&
 					siteuser2.getId() != siteuser.getId()) {
+				model.addAttribute("siteuser", siteuser);
 				model.addAttribute("error", "Email is already in use. Choose another email.");
 				return "WEB-INF/siteuser/editsiteuseradmin.jsp";
 			}
@@ -159,6 +162,7 @@ public class UsersiteController {
 			model.addAttribute("siteuser", savedUser);
 		} else {
 			model.addAttribute("error", "Error encountered. Operation aborted.");
+			model.addAttribute("siteuser", siteuser);
 			return "WEB-INF/siteuser/editsiteuseradmin.jsp";
 		}
 
