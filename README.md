@@ -18,7 +18,7 @@ Though the project models a user login, registration, and account management app
 * Ensure the database account to be used by the app exists in MySQL.
 * Connect to your app from a browser using http://youripaddress:AppPort/nameofproject
 
-### How to Used
+### How to Use
 
 This application models user login, registration, and account management. The supplied SQL script includes a mix of admin and user accounts. There are three user type choices in the application (administrator, customer, employee) however, there are essentially just two roles, administrator and non-administrator.  
 
