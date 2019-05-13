@@ -18,6 +18,12 @@ Though the project models a user login, registration, and account management app
 * Ensure the database account to be used by the app exists in MySQL.
 * Connect to your app from a browser using http://youripaddress:AppPort/nameofproject
 
+### How to Used
+
+This application models user login, registration, and account management. The supplied SQL script includes a mix of admin and user accounts. There are three user type choices in the application (administrator, customer, employee) however, there are essentially just two roles, administrator and non-administrator.  
+
+Examining the data in the database will provide the login credentials as they are stored in clear-text.  As a non-administrator role the user has access to either register a new account or update their account.  An administrator has access to additional fields as well as an administrator console with search capability as well as the full list of user accounts. An administrator can register new accounts including setting user type which a non-administrator does not have access to.  An administrator can also delete accounts as well as update all existing accounts.
+
 ### UML Diagram
 
 ![UML Diagram](https://github.com/robrides/JPACRUDProject/blob/master/UserJPA/UserJPACRUD_UML.png)
