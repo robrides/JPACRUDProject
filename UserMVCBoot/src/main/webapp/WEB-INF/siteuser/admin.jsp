@@ -46,14 +46,16 @@
 							value="All Users">
 					</form>
 				</div>
+				<div class="form-group">
+					<form class="btn btn-secondary" class="form-control"
+							action="getSiteuserAny.do" method="GET">
+						<input autofocus="autofocus" type="text" name="searchTerm" placeholder="Search Name or Id" /> <input type="submit"
+							class="btn btn-primary btn-block" value="Search User" />
+					</form>
+				</div>
 				<c:if test="${! empty siteuserList }">
 					<div class="form-group input-group">
 
-						<form class="btn btn-secondary" class="form-control"
-							action="getSiteuserAny.do" method="GET">
-							<input autofocus="autofocus" type="text" name="searchTerm" placeholder="Search Name or Id" /> <input type="submit"
-								class="btn btn-primary btn-block" value="Search User" />
-						</form>
 					</div>
 					<ul class="list-group">
 						<c:forEach var="siteuser" items="${siteuserList}">

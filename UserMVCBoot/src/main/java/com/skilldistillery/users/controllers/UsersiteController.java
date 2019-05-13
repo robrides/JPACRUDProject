@@ -191,7 +191,7 @@ public class UsersiteController {
 	@RequestMapping(path = "getSiteuserAny.do", method = RequestMethod.GET)
 	public String getSiteuserAny(Model model, String searchTerm) {
 		List<Siteuser> siteuserList = siteuserDAO.findByAny(searchTerm);
-		if (siteuserList.size() > 0) {
+		if (siteuserList.size() != 0 && siteuserList.get(0) != null) {
 			model.addAttribute(siteuserList);
 			return "WEB-INF/siteuser/admin.jsp";
 		} else {
@@ -203,7 +203,7 @@ public class UsersiteController {
 	@RequestMapping(path = "getAllSiteusers.do", method = RequestMethod.GET)
 	public String getAllSiteuser(Model model) {
 		List<Siteuser> siteuserList = siteuserDAO.findAll();
-		if (siteuserList.size() > 0) {
+		if (siteuserList.size() != 0) {
 			model.addAttribute(siteuserList);
 			return "WEB-INF/siteuser/admin.jsp";
 		} else {
