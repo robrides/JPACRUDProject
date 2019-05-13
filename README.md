@@ -34,7 +34,7 @@ Examining the data in the database will provide the login credentials as they ar
 
 ### Technologies Used
 
-Spring Tool Suite (STS/Eclipse), Spring MVC Framework, Java, JPA, Gradle, Tomcat, MySQL, MySQL WorkBench, C.R.U.D functionality, MAMP (MacOS, Apache, MySQL, PHP/Python/Perl(Not used)), JBoss, log4j, JDK, HTML, CSS, Atom, Bash Terminal
+Spring Tool Suite (STS/Eclipse), Spring MVC Framework, Java, JPA, Hibernate, Gradle, Tomcat, MySQL, MySQL WorkBench, C.R.U.D functionality, MAMP (MacOS, Apache, MySQL, PHP/Python/Perl(Not used)), JBoss, log4j, JDK, HTML, CSS, Atom, Bash Terminal
 
 ### Lessons Learned
 
