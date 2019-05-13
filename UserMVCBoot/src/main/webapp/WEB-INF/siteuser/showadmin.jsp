@@ -42,7 +42,7 @@
 				<li class="list-group-item">Salary: ${siteuser.salary}</li>
 				<li class="list-group-item">Visits:
 					${siteuser.numVisits}</li>
-				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
+				<li class="list-group-item"><a href="${siteuser.userUrl}" target="_blank">${siteuser.firstName }'s
 						site</a></li>
 				<li class="list-group-item">User Type: ${siteuser.userType}</li>
 				<li class="list-group-item">Last Login: ${siteuser.lastLogin}</li>

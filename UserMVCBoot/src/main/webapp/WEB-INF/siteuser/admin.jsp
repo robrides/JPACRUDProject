@@ -51,7 +51,7 @@
 
 						<form class="btn btn-secondary" class="form-control"
 							action="getSiteuserAny.do" method="GET">
-							<input type="text" name="searchTerm" placeholder="Search Name or Id" /> <input type="submit"
+							<input autofocus="autofocus" type="text" name="searchTerm" placeholder="Search Name or Id" /> <input type="submit"
 								class="btn btn-primary btn-block" value="Search User" />
 						</form>
 					</div>

@@ -142,7 +142,15 @@
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
-
+						<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i
+								class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<form:input path="lastLogin" name="" class="form-control"
+							placeholder="Last Login" type="text" readOnly="true" />
+					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
@@ -160,6 +168,13 @@
 					Have an account? <a href="">Log In</a>
 				</p> -->
 				</form:form>
+				<div class="form-group">
+					<form class="btn btn-primary btn-block" class="form-control"
+						action="admin.do" method="GET">
+						<input type="submit" class="btn btn-primary btn-block"
+						value="Admin Console" />
+					</form>
+				</div>
 				<div class="form-group">
 					<form action="/" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"

@@ -34,7 +34,7 @@
 				<li class="list-group-item">Password: ${siteuser.password}</li>
 				<li class="list-group-item">Job Title: ${siteuser.jobTitle}</li>
 				<li class="list-group-item">Salary: $${siteuser.salary}</li>
-				<li class="list-group-item"><a href="${siteuser.userUrl}">${siteuser.firstName }'s
+				<li class="list-group-item"><a href="${siteuser.userUrl}" target="_blank">${siteuser.firstName }'s
 						site</a></li>
 			</ul>
 		</div>

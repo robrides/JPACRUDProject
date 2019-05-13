@@ -27,18 +27,7 @@
 					<h5>${error }</h5>
 				</c:if>
 				<form:form action="saveSiteuser.do" method="POST"
-					modelAttribute="siteuser">
-
-<%-- 					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i
-								class="fa fa-user-circle"></i>
-							</span>
-						</div>
-						<form:input path="id" name="" class="form-control"
-							placeholder="ID" type="text" readOnly="true" />
-					</div> --%>
-					
+					modelAttribute="siteuser">			
 					<input type="hidden" name="id" value="<c:out value="${ siteuser.id }"/>" />
 					<!-- form-group// -->
 					<div class="form-group input-group">
@@ -111,7 +100,7 @@
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<br> Salary $ <span class="input-group-text"> <i
-								class="fa money-bill"></i>
+								class="fa fa-calculator"></i>
 							</span>
 						</div>
 						<form:input path="salary" name="" class="form-control"
@@ -133,6 +122,7 @@
 					<!-- form-group// -->
 
 					<input type="hidden" name="userType" value="<c:out value="${ siteuser.userType }"/>" />
+					<input type="hidden" name="lastLogin" value="<c:out value="${ siteuser.lastLogin }"/>" />
 
 						<!-- form-group end.// -->
 					<div class="form-group input-group">
