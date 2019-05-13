@@ -39,3 +39,4 @@ Java persistence query language is similar to SQL but overlooked nuances can slo
 * Enforce unique constraints on the email and username in the database; handle MySQL error messages when this constraint is violated.
 * Implement a robust login mechanism exploring sessions and robust authentication solutions.
 * Implement TLS (SSL) / https / server-side PKI certificates.
+* Refine styling.
