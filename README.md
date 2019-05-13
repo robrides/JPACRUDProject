@@ -41,4 +41,4 @@ Java persistence query language is similar to SQL but overlooked nuances can slo
 * Implement TLS (SSL) / https / server-side PKI certificates.
 * Refine styling.
 * Improve exception handling.
-* Add annotations to include ``@Error` as well as min and max values.
+* Add annotations to include @Error` as well as min and max values.

@@ -57,8 +57,8 @@
 					</div>
 					<ul class="list-group">
 						<c:forEach var="siteuser" items="${siteuserList}">
-							<li class="list-group-item list-group-item-action">
-							<a href="getSiteuser.do?suid=${siteuser.id }">
+							<li class="list-group-item list-group-item-action"
+							><a href="getSiteuser.do?suid=${siteuser.id }">
 								${siteuser.firstName }
 									${siteuser.lastName }</a></li>
 						</c:forEach>
