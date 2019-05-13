@@ -16,7 +16,7 @@ Though the project models a user login, registration, and account management app
 * With a copy of the project in your Spring Tool Suite, create a .war file.
 * Deploy the .war file to your server.
 * Ensure the database account to be used by the app exists in MySQL.
-* Connect to your app from a browser using http://youripaddress:AppPort/nameofproject
+* Connect to your app from a browser using `http://youripaddress:AppPort/nameofproject`
 
 ### How to Use
 
