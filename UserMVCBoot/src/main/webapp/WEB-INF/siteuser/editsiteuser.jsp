@@ -28,7 +28,7 @@
 				</c:if>
 				<form:form action="saveSiteuser.do" method="POST"
 					modelAttribute="siteuser">			
-					<input type="hidden" name="id" value="<c:out value="${ siteuser.id }"/>" />
+					<form:input type="hidden" path="id" name="Id" value="${ siteuser.id }" />
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -116,14 +116,20 @@
 							<span class="input-group-text"> <i class="fa fa-link"></i>
 							</span>
 						</div>
-						<form:input path="userUrl" name="" class="form-control"
+						<form:input path="userUrl" name="UserURL" class="form-control"
 							placeholder="Website URL" type="text" />
 					</div>
 					<!-- form-group// -->
-
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-link"></i>
+							</span>
 					<input type="hidden" name="userType" value="<c:out value="${ siteuser.userType }"/>" />
-					<input type="hidden" name="lastLogin" value="<c:out value="${ siteuser.lastLogin }"/>" />
-
+					</div>
+					</div>
+					<c:if test="${! empty lastLogin }">
+					<input type="hidden" name="lastLogin" value="<c:out value="${ siteuser.lastLogin }"/>" /> 
+					</c:if>
 						<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -140,10 +146,10 @@
 					</div>
 				</form:form>
 				<div class="form-group">
-					<form action="home.do" method="GET">
+					<form:form action="home.do" method="GET">
 						<input class="btn btn-primary btn-block" type="submit"
 							value="Home" />
-					</form>
+					</form:form>
 				</div>
 			</article>
 		</div>

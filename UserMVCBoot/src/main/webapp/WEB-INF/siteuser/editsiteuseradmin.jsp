@@ -37,7 +37,8 @@
 						</div>
 						<form:input path="id" name="" class="form-control"
 							placeholder="ID" type="text" readOnly="true" />
-						<input type="hidden" name="id" value="<c:out value="${ siteuser.id }"/>" />
+						<input type="hidden" name="id"
+							value="<c:out value="${ siteuser.id }"/>" />
 					</div>
 					<!-- form-group// -->
 					<div class="form-group input-group">
@@ -86,36 +87,33 @@
 							<span class="input-group-text"> <i class="fa fa-building"></i>
 							</span>
 						</div>
-						<form:select path="jobTitle" class="form-control" 
+						<form:select path="jobTitle" class="form-control"
 							value="Select...">
-							<option selected >${siteuser.jobTitle }</option>
+							<option selected>${siteuser.jobTitle }</option>
 							<option>Software Engineer</option>
-							<option>Database
-								Administrator</option>
-							<option>System
-								Administrator</option>
+							<option>Database Administrator</option>
+							<option>System Administrator</option>
 							<option>Accounting</option>
 							<option>Designer</option>
 							<option>Manager</option>
-							<option>Chief Executive
-								Officer</option>
+							<option>Chief Executive Officer</option>
 							<option>other</option>
 						</form:select>
 					</div>
 					<!-- form-group end.// -->
-									<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="accountStatus" class="form-control"
-								placeholder="Select...">
-								<option selected>${siteuser.accountStatus }</option>
-								<option >Active</option>
-								<option >Inactive</option>
-								<option >Archived</option>
-							</form:select>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-building"></i>
+							</span>
 						</div>
+						<form:select path="accountStatus" class="form-control"
+							placeholder="Select...">
+							<option selected>${siteuser.accountStatus }</option>
+							<option>Active</option>
+							<option>Inactive</option>
+							<option>Archived</option>
+						</form:select>
+					</div>
 
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
@@ -128,15 +126,15 @@
 							type="number" />
 					</div>
 					<!-- form-group// -->
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<br> Visits <span class="input-group-text"> <i
-									class="fa fa-hashtag"></i>
-								</span>
-							</div>
-							<form:input path="numVisits" name="" class="form-control"
-								type="number" readonly="true" />
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<br> Visits <span class="input-group-text"> <i
+								class="fa fa-hashtag"></i>
+							</span>
 						</div>
+						<form:input path="numVisits" name="" class="form-control"
+							type="number" readonly="true" />
+					</div>
 
 					<!-- form-group// -->
 					<div class="form-group input-group">
@@ -148,20 +146,20 @@
 							placeholder="Website URL" type="text" />
 					</div>
 					<!-- form-group// -->
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i>
-								</span>
-							</div>
-							<form:select path="userType" class="form-control"
-								placeholder="Select...">
-								<option selected>${siteuser.userType }</option>
-								<option>Customer</option>
-								<option>Employee</option>
-								<option>Admin</option>
-							</form:select>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-building"></i>
+							</span>
 						</div>
-						<!-- form-group end.// -->
+						<form:select path="userType" class="form-control"
+							placeholder="Select...">
+							<option selected>${siteuser.userType }</option>
+							<option>Customer</option>
+							<option>Employee</option>
+							<option>Admin</option>
+						</form:select>
+					</div>
+					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> <i class="fa fa-lock"></i>
@@ -170,25 +168,26 @@
 						<form:input path="password" class="form-control"
 							placeholder="Create password" type="password" />
 					</div>
-					<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> <i
-								class="fa fa-calendar"></i>
-							</span>
+					<c:if test="${! empty lastLogin }">
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-calendar"></i>
+								</span>
+							</div>
+							<form:input path="lastLogin" name="" class="form-control"
+								placeholder="Last Login" type="text" readOnly="true" />
 						</div>
-						<form:input path="lastLogin" name="" class="form-control"
-							placeholder="Last Login" type="text" readOnly="true" />
-					</div>
+					</c:if>
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block"
 							value="Update Account" />
 					</div>
 					<!-- form-group// -->
-					</form:form>
-					<div class="form-group">
-						<form class="btn btn-primary btn-block" class="form-control"
-							action="admin.do" method="GET">
-							<input type="submit" class="btn btn-primary btn-block"
+				</form:form>
+				<div class="form-group">
+					<form class="btn btn-primary btn-block" class="form-control"
+						action="admin.do" method="GET">
+						<input type="submit" class="btn btn-primary btn-block"
 							value="Admin Console" />
 					</form>
 				</div>

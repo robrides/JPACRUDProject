@@ -33,7 +33,7 @@ public class Siteuser {
 	@Column(name="user_type")
 	private String userType;  // admin view only
 	@Column(name="last_login")
-	private Date lastLogin;  // admin view only
+	private Date lastLogin = null;  // admin view only
 	
 	
 	public Date getLastLogin() {
