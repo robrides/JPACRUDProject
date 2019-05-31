@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Siteuser {
@@ -33,7 +35,8 @@ public class Siteuser {
 	@Column(name="user_type")
 	private String userType;  // admin view only
 	@Column(name="last_login")
-	private Date lastLogin = null;  // admin view only
+	@Temporal(TemporalType.DATE)
+	private Date lastLogin;  // admin view only
 	
 	
 	public Date getLastLogin() {

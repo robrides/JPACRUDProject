@@ -51,4 +51,4 @@ Java persistence query language is similar to SQL but overlooked nuances can slo
 
 ### Known Issues
 
-Please see the issue tracker for known issues.  If additional issues are discovered please open an new issue.
+Please see the issue tracker for known issues.  If additional issues are discovered please open a new issue.
